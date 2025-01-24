@@ -4,12 +4,15 @@
   "description": "this is the project created for educational purpose",
   "main": "app.js",
   "scripts": {
-    "start" : "nodemon app.js"
+    "start": "nodemon app.js"
   },
   "author": "Toumi Fourat",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.21.2"
+    "bcrypt": "^5.1.1",
+    "express": "^4.21.2",
+    "express-validator": "^7.2.1",
+    "mongoose": "^8.9.5"
   },
   "devDependencies": {
     "nodemon": "^3.1.9"

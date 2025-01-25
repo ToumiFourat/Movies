@@ -8,6 +8,10 @@ exports.userValidator =
     check('password').trim().not().isEmpty().withMessage('Password is missing !').isLength({min: 8, max: 20}).withMessage('Password must be 8 to 20 characters  long !')
 ]
 
+exports.validatePassword=[
+    check('newPassword').trim().not().isEmpty().withMessage('Password is missing !').isLength({min: 8, max: 20}).withMessage('Password must be 8 to 20 characters  long !')
+
+]
 exports.validate = (req, res, next) => {
     const errors = validationResult(req).array(); // Récupère les erreurs de validation
     if (!errors.length) {
@@ -20,3 +24,4 @@ exports.validate = (req, res, next) => {
         errors: errors
     });
 };
+

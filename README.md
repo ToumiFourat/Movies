@@ -7,3 +7,4 @@ To speed up development and take advantage of ready-to-use features, feel free t
 - For validating and sanitizing inputs effectively, check out the [express-validator documentation](https://express-validator.github.io/docs/).  
 - To securely handle cryptographic functions, visit the [Node.js Crypto API documentation](https://nodejs.org/api/crypto.html).  
 - For handling authentication and generating JWT tokens, refer to the [jsonwebtoken documentation](https://www.npmjs.com/package/jsonwebtoken).  
+- For logging HTTP requests in your application, check out the [Morgan documentation](https://www.npmjs.com/package/morgan).  

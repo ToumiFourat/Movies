@@ -8,3 +8,4 @@ To speed up development and take advantage of ready-to-use features, feel free t
 - To securely handle cryptographic functions, visit the [Node.js Crypto API documentation](https://nodejs.org/api/crypto.html).  
 - For handling authentication and generating JWT tokens, refer to the [jsonwebtoken documentation](https://www.npmjs.com/package/jsonwebtoken).  
 - For logging HTTP requests in your application, check out the [Morgan documentation](https://www.npmjs.com/package/morgan).  
+- To manage environment variables securely, refer to the [dotenv documentation](https://www.npmjs.com/package/dotenv).  

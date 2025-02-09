@@ -10,6 +10,7 @@ To speed up development and take advantage of ready-to-use features, feel free t
 - For logging HTTP requests in your application, check out the [Morgan documentation](https://www.npmjs.com/package/morgan).  
 - To manage environment variables securely, refer to the [dotenv documentation](https://www.npmjs.com/package/dotenv).  
 - To easily use icons in your React project, check out the [react-icons documentation](https://www.npmjs.com/package/react-icons).
+- For client-side routing and navigation, refer to the [React Router documentation](https://reactrouter.com/).
 ## Design Figma
 -[Login/Register UI/UX](https://www.figma.com/design/OJWmizhxJhMDLWtYYJXAPS/Movies-(Authentication-UI%2FUX)?node-id=0-1&t=B9QR6zwAqXCNsRxZ-1)
 

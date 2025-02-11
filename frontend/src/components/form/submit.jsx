@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function submit({ value }) {
+export default function Submit({ value }) {
   return (
     <input
       type="submit"

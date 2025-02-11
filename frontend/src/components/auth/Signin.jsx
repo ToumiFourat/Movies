@@ -2,7 +2,7 @@ import React from "react";
 import Container from "../Container";
 import Title from "../form/Title";
 import FormInput from "../form/FormInput";
-import Submit from "../form/submit";
+import Submit from "../form/Submit";
 import { Link } from "react-router-dom";
 import CustomLink from "../CustomLink";
 

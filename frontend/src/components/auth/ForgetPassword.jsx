@@ -9,12 +9,9 @@ export default function ForgetPassword() {
   return (
     <div className="fixed inset-0 bg-primary -z-10 flex justify-center items-center">
       <Container>
-        <form className="bg-secondary rounded p-6 w-100 space-y-6">
-          <Title>Please enter the OTP to verify your account</Title>
-          <FormInput
-            label="OTP has been sent to your email fo***@gmail.com"
-            placeholder="fourattoumi021@gmail.com"
-          />
+        <form className="bg-secondary rounded p-6 w-96 space-y-6">
+          <Title>Please Enter Your Email</Title>
+          <FormInput label="Email" placeholder="fourattoumi021@gmail.com" />
 
           <Submit value="Send Link" />
           <div className="flex justify-between">

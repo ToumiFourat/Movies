@@ -7,6 +7,7 @@ import CustomLink from "../CustomLink";
 import { commonModalClasses } from "../../utils/Theme";
 import FormContainer from "../form/FormContainer";
 import { createUser } from "../../api/auth";
+import { useNavigate } from "react-router-dom";
 const validateUserInfo = ({ name, email, password }) => {
   const isValidEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   const isValidName = /^[a-z A-Z]+$/;
@@ -26,7 +27,7 @@ export default function Signup() {
     email: "",
     password: "",
   });
-
+  const navigate = useNavigate();
   const handleChange = ({ target }) => {
     const { value, name } = target;
     setUserInfo({ ...userInfo, [name]: value });
@@ -39,6 +40,10 @@ export default function Signup() {
     if (!ok) return console.log(error);
     const response = await createUser(userInfo);
     if (response) return console.log(response.error);
+    navigate("/auth/verification", {
+      state: { user: response.user },
+      replace: true,
+    });
     console.log(response.user);
   };
 

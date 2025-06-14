@@ -2,15 +2,17 @@
 
 ## Built with the MERN Stack
 
-To speed up development and take advantage of ready-to-use features, feel free to explore the [official documentation](https://www.npmjs.com/) of the npm packages used in this project.  
+To speed up development and take advantage of ready-to-use features, feel free to explore the [official documentation](https://www.npmjs.com/) of the npm packages used in this project.
 
 - For validating and sanitizing inputs effectively, check out the [express-validator documentation](https://express-validator.github.io/docs/).  
 - To securely handle cryptographic functions, visit the [Node.js Crypto API documentation](https://nodejs.org/api/crypto.html).  
 - For handling authentication and generating JWT tokens, refer to the [jsonwebtoken documentation](https://www.npmjs.com/package/jsonwebtoken).  
 - For logging HTTP requests in your application, check out the [Morgan documentation](https://www.npmjs.com/package/morgan).  
 - To manage environment variables securely, refer to the [dotenv documentation](https://www.npmjs.com/package/dotenv).  
-- To easily use icons in your React project, check out the [react-icons documentation](https://www.npmjs.com/package/react-icons).
-- For client-side routing and navigation, refer to the [React Router documentation](https://reactrouter.com/).
+- To easily use icons in your React project, check out the [react-icons documentation](https://www.npmjs.com/package/react-icons).  
+- For client-side routing and navigation, refer to the [React Router documentation](https://reactrouter.com/).  
+- For making HTTP requests from the client or server, see the [Axios documentation](https://www.npmjs.com/package/axios).
+
 ## Design Figma
 -[Login/Register UI/UX](https://www.figma.com/design/OJWmizhxJhMDLWtYYJXAPS/Movies-(Authentication-UI%2FUX)?node-id=0-1&t=B9QR6zwAqXCNsRxZ-1)
 

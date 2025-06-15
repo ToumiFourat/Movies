@@ -4,7 +4,7 @@
 }
 
 .bounce-custom {
-  animation: gelatine 0.5s infinite;
+  animation: gelatine 0.5s;
 }
 @keyframes gelatine {
   from,

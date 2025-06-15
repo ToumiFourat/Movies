@@ -7,6 +7,7 @@ import Title from "../form/Title";
 import { commonModalClasses } from "./../../utils/Theme";
 import { useLocation, useNavigate } from "react-router-dom";
 import { verifyUserEmail } from "../../api/auth";
+import { useNotification } from "../../hooks";
 
 const OTP_LENGTH = 6;
 const isValidOTP = (otp) => {
@@ -26,6 +27,7 @@ export default function EmailVerification() {
   const [activeOtpIndex, setActiveOtpIndex] = useState(0);
 
   const inputRef = useRef();
+  const { updateNotification } = useNotification();
   const navigate = useNavigate();
 
   const { state } = useLocation();
@@ -66,8 +68,8 @@ export default function EmailVerification() {
       OTP: otp.join(""),
       userId: user.id,
     });
-    if (error) return console.log(error);
-    console.log(message);
+    if (error) return updateNotification("error", error);
+    updateNotification("success", message);
   };
 
   useEffect(() => {

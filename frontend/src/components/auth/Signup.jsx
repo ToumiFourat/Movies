@@ -39,7 +39,7 @@ export default function Signup() {
 
     if (!ok) return console.log(error);
     const response = await createUser(userInfo);
-    if (response) return console.log(response.error);
+    if (!response) return console.log(response.error);
     navigate("/auth/verification", {
       state: { user: response.user },
       replace: true,

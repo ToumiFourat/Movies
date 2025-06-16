@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Container from "../Container";
 import Title from "../form/Title";
 import FormInput from "../form/FormInput";
@@ -8,7 +8,7 @@ import { commonModalClasses } from "../../utils/Theme";
 import FormContainer from "../form/FormContainer";
 import { createUser } from "../../api/auth";
 import { useNavigate } from "react-router-dom";
-import { useNotification } from "../../hooks";
+import { useAuth, useNotification } from "../../hooks";
 const validateUserInfo = ({ name, email, password }) => {
   const isValidEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   const isValidName = /^[a-z A-Z]+$/;
@@ -30,6 +30,8 @@ export default function Signup() {
   });
   const navigate = useNavigate();
   const { updateNotification } = useNotification();
+  const { authInfo } = useAuth();
+  const { isLoggedIn } = authInfo;
   const handleChange = ({ target }) => {
     const { value, name } = target;
     setUserInfo({ ...userInfo, [name]: value });
@@ -50,7 +52,9 @@ export default function Signup() {
   };
 
   const { name, email, password } = userInfo;
-
+  useEffect(() => {
+    if (isLoggedIn) navigate("/");
+  }, [isLoggedIn]);
   return (
     <FormContainer>
       <Container>

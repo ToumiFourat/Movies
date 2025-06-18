@@ -7,7 +7,7 @@ import Title from "../form/Title";
 import { commonModalClasses } from "./../../utils/Theme";
 import { useLocation, useNavigate } from "react-router-dom";
 import { verifyUserEmail } from "../../api/auth";
-import { useNotification } from "../../hooks";
+import { useAuth, useNotification } from "../../hooks";
 
 const OTP_LENGTH = 6;
 const isValidOTP = (otp) => {
@@ -25,6 +25,8 @@ let currentOTPIndex;
 export default function EmailVerification() {
   const [otp, setOtp] = useState(new Array(OTP_LENGTH).fill(""));
   const [activeOtpIndex, setActiveOtpIndex] = useState(0);
+  const { isAuth, authInfo } = useAuth();
+  const { isLoggedIn } = authInfo;
 
   const inputRef = useRef();
   const { updateNotification } = useNotification();
@@ -64,12 +66,18 @@ export default function EmailVerification() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!isValidOTP(otp)) return console.log("invalid OTP");
-    const { error, message } = await verifyUserEmail({
+    const {
+      error,
+      message,
+      user: userResponse,
+    } = await verifyUserEmail({
       OTP: otp.join(""),
       userId: user.id,
     });
     if (error) return updateNotification("error", error);
     updateNotification("success", message);
+    localStorage.setItem("auth-token", userResponse.token);
+    isAuth();
   };
 
   useEffect(() => {
@@ -78,7 +86,8 @@ export default function EmailVerification() {
 
   useEffect(() => {
     if (!user) navigate("/not-found");
-  }, [user]);
+    if (isLoggedIn) navigate("/");
+  }, [user, isLoggedIn]);
 
   // if (!user) return null;
 

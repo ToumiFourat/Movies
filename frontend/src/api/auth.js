@@ -49,3 +49,14 @@ export const getIsAuth = async (token) => {
     return { error: error.message || error };
   }
 };
+
+export const forgetPassword = async (email) => {
+  try {
+    const { data } = await client.post("/user/forget-password", { email });
+    return data;
+  } catch (error) {
+    const { response } = error;
+    if (response?.data) return response.data;
+    return { error: error.message || error };
+  }
+};

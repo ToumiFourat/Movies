@@ -9,12 +9,11 @@ import { commonModalClasses } from "../../utils/Theme";
 import FormContainer from "../form/FormContainer";
 import { useAuth, useNotification } from "../../hooks";
 import { useNavigate } from "react-router-dom";
+import { isValidEmail } from "./../../utils/helper";
 
 const validateUserInfo = ({ email, password }) => {
-  const isValidEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-
   if (!email.trim()) return { ok: false, error: "Email is missing!" };
-  if (!isValidEmail.test(email)) return { ok: false, error: "Invalid email!" };
+  if (!isValidEmail(email)) return { ok: false, error: "Invalid email!" };
   if (!password.trim()) return { ok: false, error: "Password is missing!" };
   if (password.length < 8)
     return { ok: false, error: "Password must be 8 characters long!" };

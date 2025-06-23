@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Container from "../Container";
 import Title from "../form/Title";
 import FormInput from "../form/FormInput";
@@ -6,15 +6,29 @@ import Submit from "../form/Submit";
 import FormContainer from "../form/FormContainer";
 import { commonModalClasses } from "../../utils/Theme";
 import { useSearchParams } from "react-router-dom";
+import { ImSpinner3 } from "react-icons/im";
+
 export default function ConfirmPassword() {
+  const [isVerifying, setIsVerifying] = useState(true);
   const [searchParams] = useSearchParams();
   const token = searchParams.get("token");
   const id = searchParams.get("id");
-  console.log(token, id);
 
-  //  http://localhost:3000/reset-password?
-  //  token=792429ab5dc05feaf02b9d389401e442bc2911cc28b2ec31a17f1a22382f&
-  //  id=6850616ccd93c7e1ed087630
+  // isValid, isVerifying, !isValid
+
+  if (isVerifying)
+    return (
+      <FormContainer>
+        <Container>
+          <div className="flex space-x-2 items-center">
+            <h1 className="text-4xl font-semibold dark:text-white text-primary">
+              Please wait we are verifying your token!
+            </h1>
+            <ImSpinner3 className="animate-spin text-4xl dark:text-white text-primary" />
+          </div>
+        </Container>
+      </FormContainer>
+    );
   return (
     <FormContainer>
       <Container>

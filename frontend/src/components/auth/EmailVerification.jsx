@@ -6,7 +6,7 @@ import Submit from "../form/Submit";
 import Title from "../form/Title";
 import { commonModalClasses } from "./../../utils/Theme";
 import { useLocation, useNavigate } from "react-router-dom";
-import { verifyUserEmail } from "../../api/auth";
+import { resendEmailVerificationToken, verifyUserEmail } from "../../api/auth";
 import { useAuth, useNotification } from "../../hooks";
 
 const OTP_LENGTH = 6;
@@ -26,7 +26,8 @@ export default function EmailVerification() {
   const [otp, setOtp] = useState(new Array(OTP_LENGTH).fill(""));
   const [activeOtpIndex, setActiveOtpIndex] = useState(0);
   const { isAuth, authInfo } = useAuth();
-  const { isLoggedIn } = authInfo;
+  const { isLoggedIn, profile } = authInfo;
+  const isVerified = profile?.isVerified;
 
   const inputRef = useRef();
   const { updateNotification } = useNotification();
@@ -79,6 +80,11 @@ export default function EmailVerification() {
     localStorage.setItem("auth-token", userResponse.token);
     isAuth();
   };
+  const handleOTPResend = async () => {
+    const { error, message } = await resendEmailVerificationToken(user.id);
+    if (error) return updateNotification("error", error);
+    updateNotification("success", message);
+  };
 
   useEffect(() => {
     inputRef.current?.focus();
@@ -86,8 +92,8 @@ export default function EmailVerification() {
 
   useEffect(() => {
     if (!user) navigate("/not-found");
-    if (isLoggedIn) navigate("/");
-  }, [user, isLoggedIn]);
+    if (isLoggedIn && isVerified) navigate("/");
+  }, [user, isLoggedIn, isVerified]);
 
   // if (!user) return null;
 
@@ -117,8 +123,16 @@ export default function EmailVerification() {
               );
             })}
           </div>
-
-          <Submit value="Send Link" />
+          <div>
+            <Submit value="Send Link" />
+            <button
+              onClick={handleOTPResend}
+              type="button"
+              className="dark:text-white text-blue-500 font-semibold hover:underline mt-2"
+            >
+              I don't have OTP
+            </button>
+          </div>
         </form>
       </Container>
     </FormContainer>
